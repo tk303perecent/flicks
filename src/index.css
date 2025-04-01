@@ -1,0 +1,128 @@
+/* src/index.css */
+
+/* === Tailwind Directives === */
+/* These MUST come first */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* === Global HTML/Body Styles === */
+html {
+  scroll-behavior: smooth;
+  /* Custom Scrollbar Styles */
+  @apply scrollbar-thin scrollbar-track-pleasant-grey scrollbar-thumb-medium-text hover:scrollbar-thumb-accent-teal;
+}
+
+body {
+   /* Base background, text color, and font smoothing */
+   @apply bg-pleasant-grey text-light-text antialiased;
+}
+
+
+/* === Custom Calendar Styles === */
+
+/* Container for centering/max-width (often applied via parent div in JSX) */
+/* .flicks-calendar-container {} */ /* Empty ruleset can be removed or kept if planned for future use */
+
+/* Base calendar overrides */
+.flicks-calendar {
+  @apply border-none rounded-lg bg-transparent w-full text-sm;
+}
+
+/* Navigation buttons (prev/next month) */
+.flicks-calendar .react-calendar__navigation button {
+  @apply text-accent-teal font-bold text-lg min-w-0 px-2 py-1 bg-transparent hover:bg-pleasant-grey rounded transition-colors duration-150; /* Added transition */
+}
+.flicks-calendar .react-calendar__navigation button:disabled {
+  @apply text-gray-600 cursor-not-allowed bg-transparent opacity-50; /* Added opacity */
+}
+/* Navigation label (Month Year) */
+.flicks-calendar .react-calendar__navigation__label {
+    @apply text-light-text font-semibold flex-grow-0 bg-transparent px-2 py-1 hover:bg-pleasant-grey rounded transition-colors duration-150 cursor-pointer; /* Added hover/cursor */
+}
+.flicks-calendar .react-calendar__navigation__label:disabled {
+     @apply hover:bg-transparent cursor-default; /* Disable hover effect if disabled */
+}
+
+
+/* Month view tiles (days) */
+.flicks-calendar .react-calendar__month-view__days__day {
+  @apply text-light-text aspect-square flex items-center justify-center m-0.5 rounded bg-transparent hover:bg-pleasant-grey transition-colors duration-150 cursor-pointer;
+  /* aspect-square makes them square-ish */
+}
+.flicks-calendar .react-calendar__month-view__days__day:disabled {
+    @apply text-gray-600 hover:bg-transparent cursor-not-allowed opacity-60; /* Style disabled days */
+}
+
+
+/* Abbreviated weekdays (Sun, Mon..) */
+.flicks-calendar .react-calendar__month-view__weekdays__weekday {
+    @apply text-center text-xs font-semibold text-medium-text pt-2 pb-1;
+}
+.flicks-calendar .react-calendar__month-view__weekdays__weekday abbr {
+    @apply no-underline; /* Remove underline from abbr */
+}
+
+/* Neighboring month days */
+.flicks-calendar .react-calendar__month-view__days__day--neighboringMonth {
+  @apply text-gray-600 hover:bg-pleasant-grey/50; /* Slightly different hover for neighbors */
+}
+.flicks-calendar .react-calendar__month-view__days__day--neighboringMonth:disabled {
+    @apply text-gray-700 hover:bg-transparent; /* Disabled neighboring days */
+}
+
+
+/* Weekend days */
+.flicks-calendar .react-calendar__month-view__days__day--weekend {
+  /* Optional: Slightly different color for weekends */
+  /* @apply text-blue-300; */
+}
+
+/* Today's date */
+.flicks-calendar .react-calendar__tile--now {
+  @apply bg-navbar-grey/60 font-bold; /* Use navbar-grey or similar distinct color */
+}
+.flicks-calendar .react-calendar__tile--now:hover {
+    @apply bg-navbar-grey/90; /* Darken hover for today */
+}
+
+/* Highlight for days with movies ('has-movie' class applied via tileClassName in JSX) */
+.flicks-calendar .react-calendar__tile.has-movie {
+  /* Add a visual indicator - e.g., a border or a dot */
+   @apply relative; /* Needed for pseudo-elements */
+}
+.flicks-calendar .react-calendar__tile.has-movie::after {
+    content: ''; /* Use empty content for a shape */
+    /* bottom dot indicator */
+    @apply absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-accent-teal rounded-full;
+
+    /* Alternative: Top-right asterisk */
+    /* content: '*';
+    @apply absolute top-0.5 right-1 text-accent-teal text-lg font-bold leading-none; */
+}
+
+/* Selected day */
+.flicks-calendar .react-calendar__tile--active {
+  @apply bg-accent-teal text-white font-bold;
+}
+.flicks-calendar .react-calendar__tile--active:hover {
+    @apply bg-accent-teal-hover; /* Use defined hover color */
+}
+/* Ensure selected day dot (if using dot) is visible */
+.flicks-calendar .react-calendar__tile--active.has-movie::after {
+    @apply bg-white; /* Change dot color on active background */
+}
+
+
+/* Other views (Decade, Year) - basic styling */
+.flicks-calendar .react-calendar__decade-view__years__year,
+.flicks-calendar .react-calendar__year-view__months__month {
+     @apply text-light-text p-4 rounded bg-transparent hover:bg-pleasant-grey transition-colors duration-150 cursor-pointer m-1; /* Added margin */
+}
+.flicks-calendar .react-calendar__decade-view__years__year:disabled, /* Style disabled year/month tiles */
+.flicks-calendar .react-calendar__year-view__months__month:disabled {
+    @apply text-gray-600 hover:bg-transparent cursor-not-allowed opacity-60;
+}
+
+/* === End Custom Calendar Styles === */

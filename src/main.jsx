@@ -23,7 +23,7 @@ import DashboardLayout from './pages/Dashboard/DashboardLayout.jsx';
 // --- ADDED IMPORT for Study Page ---
 import FlashcardsStudy from './pages/Dashboard/FlashcardsStudy.jsx'; // Adjust path if necessary
 // --- END ADDED IMPORT ---
-import Games from './pages/Games.jsx';
+
 
 // Optional: Import an error page component
 // import ErrorPage from './pages/ErrorPage';
@@ -73,12 +73,6 @@ const router = createBrowserRouter([
                 // Example with protection: element: <ProtectedRoute><FlashcardsStudy /></ProtectedRoute>
             },
             // --- END ADDED ROUTE ---
-
-            {
-                path: "games",
-                element: <Games />
-                // Example with protection: element: <ProtectedRoute><Games /></ProtectedRoute>
-            },
 
             // --- End Authenticated Routes ---
         ],

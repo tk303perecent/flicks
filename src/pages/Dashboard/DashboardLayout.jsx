@@ -5,9 +5,12 @@ import { FiBriefcase, FiFileText, FiClock, FiLayers } from 'react-icons/fi';
 
 // Import View Components
 import ProjectsView from './ProjectsView';
-import DocumentsView from './DocumentsView';
+// import DocumentsView from './DocumentsView';
 import FlashcardsView from './FlashcardsView';
 import TimetrackingView from './TimetrackingView';
+
+// Placeholder for Documents
+const DocumentsContent = () => ( <div><h2 className="text-2xl font-semibold mb-4">Documents</h2><p>...</p></div> );
 
 const DashboardLayout = () => {
     const location = useLocation();
@@ -54,7 +57,7 @@ const DashboardLayout = () => {
          console.log("DashboardLayout renderContent called. Current activeView:", activeView);
         switch (activeView) {
             case 'projects': return <ProjectsView />;
-            case 'documents': return <DocumentsView />;
+            case 'documents': return <DocumentsContent />;
             case 'flashcards': return <FlashcardsView />;
             case 'timetracking': return <TimetrackingView />;
             default: return <ProjectsView />;

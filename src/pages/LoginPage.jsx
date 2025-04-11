@@ -50,8 +50,7 @@ const LoginPage = () => {
                 // },
               }}
               theme="dark" // Use the dark variant of the theme
-              providers={['google', 'github']} // Optional: Add OAuth providers configured in Supabase
-              // socialLayout="horizontal" // Optional: Layout for social buttons
+              providers={[]} // This removes all social provider buttons
               redirectTo="http://localhost:5173/" // Where to redirect after successful login (adjust if needed)
               // view='sign_in' // Can force 'sign_in' or 'sign_up' view
               showLinks={true} // Show links for password recovery, signup
